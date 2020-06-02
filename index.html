@@ -88,22 +88,16 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['AssemDist'] !== null ? autolinker.link(feature.properties['AssemDist'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Assembly District</th>\
+                        <td>' + (feature.properties['AssemDist'] !== null ? autolinker.link(feature.properties['AssemDist'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Shape_Leng'] !== null ? autolinker.link(feature.properties['Shape_Leng'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Incumbent</th>\
+                        <td>' + (feature.properties['Incumbent'] !== null ? autolinker.link(feature.properties['Incumbent'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Shape_Area'] !== null ? autolinker.link(feature.properties['Shape_Area'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Incumbent'] !== null ? autolinker.link(feature.properties['Incumbent'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Primary'] !== null ? autolinker.link(feature.properties['Primary'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Challenger'] !== null ? autolinker.link(feature.properties['Challenger'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Challenger(s)</th>\
+                        <td>' + (feature.properties['Challenger'] !== null ? autolinker.link(feature.properties['Challenger'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -148,22 +142,16 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['State Sena'] !== null ? autolinker.link(feature.properties['State Sena'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">State Senate District</th>\
+                        <td>' + (feature.properties['State Sena'] !== null ? autolinker.link(feature.properties['State Sena'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Shape_Leng'] !== null ? autolinker.link(feature.properties['Shape_Leng'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Incumbent</th>\
+                        <td>' + (feature.properties['Incumbent'] !== null ? autolinker.link(feature.properties['Incumbent'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Shape_Area'] !== null ? autolinker.link(feature.properties['Shape_Area'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Incumbent'] !== null ? autolinker.link(feature.properties['Incumbent'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Primary'] !== null ? autolinker.link(feature.properties['Primary'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Challenger'] !== null ? autolinker.link(feature.properties['Challenger'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Challenger(s)</th>\
+                        <td>' + (feature.properties['Challenger'] !== null ? autolinker.link(feature.properties['Challenger'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -208,22 +196,16 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['CongDist'] !== null ? autolinker.link(feature.properties['CongDist'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Congressional District</th>\
+                        <td>' + (feature.properties['CongDist'] !== null ? autolinker.link(feature.properties['CongDist'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Shape_Leng'] !== null ? autolinker.link(feature.properties['Shape_Leng'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Incumbent</th>\
+                        <td>' + (feature.properties['Incumbent'] !== null ? autolinker.link(feature.properties['Incumbent'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Shape_Area'] !== null ? autolinker.link(feature.properties['Shape_Area'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Incumbent'] !== null ? autolinker.link(feature.properties['Incumbent'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Primary'] !== null ? autolinker.link(feature.properties['Primary'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Challenger'] !== null ? autolinker.link(feature.properties['Challenger'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Challenger(s)</th>\
+                        <td>' + (feature.properties['Challenger'] !== null ? autolinker.link(feature.properties['Challenger'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
