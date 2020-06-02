@@ -17,7 +17,7 @@
             margin: 0;
         }
         </style>
-        <title></title>
+        <title>June 23rd Democratic Primaries</title>
     </head>
     <body>
         <div id="map">
@@ -32,9 +32,9 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
-        <script src="data/NYAssembly_1.js"></script>
-        <script src="data/Congress_2.js"></script>
-        <script src="data/NYSenate_3.js"></script>
+        <script src="data/NYAssemblyPrimary_1.js"></script>
+        <script src="data/NYSenatePrimary_2.js"></script>
+        <script src="data/USCongressPrimary_3.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -64,10 +64,10 @@
                 map.fitBounds(bounds_group.getBounds());
             }
         }
-        map.createPane('pane_Positron_0');
-        map.getPane('pane_Positron_0').style.zIndex = 400;
-        var layer_Positron_0 = L.tileLayer('http://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-            pane: 'pane_Positron_0',
+        map.createPane('pane_Basemap_0');
+        map.getPane('pane_Basemap_0').style.zIndex = 400;
+        var layer_Basemap_0 = L.tileLayer('http://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+            pane: 'pane_Basemap_0',
             opacity: 1.0,
             attribution: '<a href="https://cartodb.com/basemaps/">Map tiles by CartoDB, under CC BY 3.0. Data by OpenStreetMap, under ODbL.</a>',
             minZoom: 1,
@@ -75,9 +75,9 @@
             minNativeZoom: 0,
             maxNativeZoom: 20
         });
-        layer_Positron_0;
-        map.addLayer(layer_Positron_0);
-        function pop_NYAssembly_1(feature, layer) {
+        layer_Basemap_0;
+        map.addLayer(layer_Basemap_0);
+        function pop_NYAssemblyPrimary_1(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -88,70 +88,56 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Assembly District</th>\
-                        <td>' + (feature.properties['AssemDist'] !== null ? autolinker.link(feature.properties['AssemDist'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['AssemDist'] !== null ? autolinker.link(feature.properties['AssemDist'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Incumbent</th>\
-                        <td>' + (feature.properties['Incumbent'] !== null ? autolinker.link(feature.properties['Incumbent'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['Shape_Leng'] !== null ? autolinker.link(feature.properties['Shape_Leng'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Challenger(s)</th>\
-                        <td>' + (feature.properties['Challenger'] !== null ? autolinker.link(feature.properties['Challenger'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['Shape_Area'] !== null ? autolinker.link(feature.properties['Shape_Area'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Incumbent'] !== null ? autolinker.link(feature.properties['Incumbent'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Primary'] !== null ? autolinker.link(feature.properties['Primary'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Challenger'] !== null ? autolinker.link(feature.properties['Challenger'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_NYAssembly_1_0(feature) {
-            switch(String(feature.properties['q2wHide_Primary'])) {
-                case 'Y':
-                    return {
-                pane: 'pane_NYAssembly_1',
+        function style_NYAssemblyPrimary_1_0() {
+            return {
+                pane: 'pane_NYAssemblyPrimary_1',
                 opacity: 1,
-                color: 'rgba(35,35,35,0.5)',
+                color: 'rgba(35,35,35,0.3)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(68,127,209,0.5)',
+                fillColor: 'rgba(108,205,147,0.3)',
                 interactive: true,
-            }
-                    break;
-                default:
-                    return {
-                pane: 'pane_NYAssembly_1',
-                opacity: 1,
-                color: 'rgba(35,35,35,0.5)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,255,255,0.5)',
-                interactive: true,
-            }
-                    break;
             }
         }
-        map.createPane('pane_NYAssembly_1');
-        map.getPane('pane_NYAssembly_1').style.zIndex = 401;
-        map.getPane('pane_NYAssembly_1').style['mix-blend-mode'] = 'normal';
-        var layer_NYAssembly_1 = new L.geoJson(json_NYAssembly_1, {
+        map.createPane('pane_NYAssemblyPrimary_1');
+        map.getPane('pane_NYAssemblyPrimary_1').style.zIndex = 401;
+        map.getPane('pane_NYAssemblyPrimary_1').style['mix-blend-mode'] = 'normal';
+        var layer_NYAssemblyPrimary_1 = new L.geoJson(json_NYAssemblyPrimary_1, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_NYAssembly_1',
-            layerName: 'layer_NYAssembly_1',
-            pane: 'pane_NYAssembly_1',
-            onEachFeature: pop_NYAssembly_1,
-            style: style_NYAssembly_1_0,
+            dataVar: 'json_NYAssemblyPrimary_1',
+            layerName: 'layer_NYAssemblyPrimary_1',
+            pane: 'pane_NYAssemblyPrimary_1',
+            onEachFeature: pop_NYAssemblyPrimary_1,
+            style: style_NYAssemblyPrimary_1_0,
         });
-        bounds_group.addLayer(layer_NYAssembly_1);
-        map.addLayer(layer_NYAssembly_1);
-        function pop_Congress_2(feature, layer) {
+        bounds_group.addLayer(layer_NYAssemblyPrimary_1);
+        function pop_NYSenatePrimary_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -162,69 +148,56 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Congressional District</th>\
-                        <td>' + (feature.properties['CongDist'] !== null ? autolinker.link(feature.properties['CongDist'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['State Sena'] !== null ? autolinker.link(feature.properties['State Sena'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Incumbent</th>\
-                        <td>' + (feature.properties['Incumbent'] !== null ? autolinker.link(feature.properties['Incumbent'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['Shape_Leng'] !== null ? autolinker.link(feature.properties['Shape_Leng'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Challenger(s)</th>\
-                        <td>' + (feature.properties['Challenger'] !== null ? autolinker.link(feature.properties['Challenger'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['Shape_Area'] !== null ? autolinker.link(feature.properties['Shape_Area'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Incumbent'] !== null ? autolinker.link(feature.properties['Incumbent'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Primary'] !== null ? autolinker.link(feature.properties['Primary'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Challenger'] !== null ? autolinker.link(feature.properties['Challenger'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Congress_2_0(feature) {
-            switch(String(feature.properties['q2wHide_Primary'])) {
-                case 'Y':
-                    return {
-                pane: 'pane_Congress_2',
+        function style_NYSenatePrimary_2_0() {
+            return {
+                pane: 'pane_NYSenatePrimary_2',
                 opacity: 1,
-                color: 'rgba(35,35,35,0.5)',
+                color: 'rgba(35,35,35,0.3)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(22,176,81,0.5)',
+                fillColor: 'rgba(242,120,161,0.3)',
                 interactive: true,
-            }
-                    break;
-                default:
-                    return {
-                pane: 'pane_Congress_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,0.5)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,255,255,0.0)',
-                interactive: true,
-            }
-                    break;
             }
         }
-        map.createPane('pane_Congress_2');
-        map.getPane('pane_Congress_2').style.zIndex = 402;
-        map.getPane('pane_Congress_2').style['mix-blend-mode'] = 'normal';
-        var layer_Congress_2 = new L.geoJson(json_Congress_2, {
+        map.createPane('pane_NYSenatePrimary_2');
+        map.getPane('pane_NYSenatePrimary_2').style.zIndex = 402;
+        map.getPane('pane_NYSenatePrimary_2').style['mix-blend-mode'] = 'normal';
+        var layer_NYSenatePrimary_2 = new L.geoJson(json_NYSenatePrimary_2, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Congress_2',
-            layerName: 'layer_Congress_2',
-            pane: 'pane_Congress_2',
-            onEachFeature: pop_Congress_2,
-            style: style_Congress_2_0,
+            dataVar: 'json_NYSenatePrimary_2',
+            layerName: 'layer_NYSenatePrimary_2',
+            pane: 'pane_NYSenatePrimary_2',
+            onEachFeature: pop_NYSenatePrimary_2,
+            style: style_NYSenatePrimary_2_0,
         });
-        bounds_group.addLayer(layer_Congress_2);
-        function pop_NYSenate_3(feature, layer) {
+        bounds_group.addLayer(layer_NYSenatePrimary_2);
+        function pop_USCongressPrimary_3(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -235,68 +208,66 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Senate District</th>\
-                        <td>' + (feature.properties['State Sena'] !== null ? autolinker.link(feature.properties['State Sena'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['CongDist'] !== null ? autolinker.link(feature.properties['CongDist'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Incumbent</th>\
-                        <td>' + (feature.properties['Incumbent'] !== null ? autolinker.link(feature.properties['Incumbent'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['Shape_Leng'] !== null ? autolinker.link(feature.properties['Shape_Leng'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Challenger(s)</th>\
-                        <td>' + (feature.properties['Challenger'] !== null ? autolinker.link(feature.properties['Challenger'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['Shape_Area'] !== null ? autolinker.link(feature.properties['Shape_Area'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Incumbent'] !== null ? autolinker.link(feature.properties['Incumbent'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Primary'] !== null ? autolinker.link(feature.properties['Primary'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Challenger'] !== null ? autolinker.link(feature.properties['Challenger'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_NYSenate_3_0(feature) {
-            switch(String(feature.properties['q2wHide_Primary'])) {
-                case 'Y':
-                    return {
-                pane: 'pane_NYSenate_3',
+        function style_USCongressPrimary_3_0() {
+            return {
+                pane: 'pane_USCongressPrimary_3',
                 opacity: 1,
-                color: 'rgba(35,35,35,0.5)',
+                color: 'rgba(35,35,35,0.3)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(233,128,165,0.5)',
+                fillColor: 'rgba(81,183,234,0.3)',
                 interactive: true,
-            }
-                    break;
-                default:
-                    return {
-                pane: 'pane_NYSenate_3',
-                opacity: 1,
-                color: 'rgba(35,35,35,0.5)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,255,255,0.5)',
-                interactive: true,
-            }
-                    break;
             }
         }
-        map.createPane('pane_NYSenate_3');
-        map.getPane('pane_NYSenate_3').style.zIndex = 403;
-        map.getPane('pane_NYSenate_3').style['mix-blend-mode'] = 'normal';
-        var layer_NYSenate_3 = new L.geoJson(json_NYSenate_3, {
+        map.createPane('pane_USCongressPrimary_3');
+        map.getPane('pane_USCongressPrimary_3').style.zIndex = 403;
+        map.getPane('pane_USCongressPrimary_3').style['mix-blend-mode'] = 'normal';
+        var layer_USCongressPrimary_3 = new L.geoJson(json_USCongressPrimary_3, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_NYSenate_3',
-            layerName: 'layer_NYSenate_3',
-            pane: 'pane_NYSenate_3',
-            onEachFeature: pop_NYSenate_3,
-            style: style_NYSenate_3_0,
+            dataVar: 'json_USCongressPrimary_3',
+            layerName: 'layer_USCongressPrimary_3',
+            pane: 'pane_USCongressPrimary_3',
+            onEachFeature: pop_USCongressPrimary_3,
+            style: style_USCongressPrimary_3_0,
         });
-        bounds_group.addLayer(layer_NYSenate_3);
+        bounds_group.addLayer(layer_USCongressPrimary_3);
+        map.addLayer(layer_USCongressPrimary_3);
+            var title = new L.Control();
+            title.onAdd = function (map) {
+                this._div = L.DomUtil.create('div', 'info');
+                this.update();
+                return this._div;
+            };
+            title.update = function () {
+                this._div.innerHTML = '<h2>June 23rd Democratic Primaries</h2>';
+            };
+            title.addTo(map);
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topleft',
@@ -308,18 +279,8 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'NY Senate<br /><table><tr><td style="text-align: center;"><img src="legend/NYSenate_3_PrimaryonJune23rd0.png" /></td><td>Primary on June 23rd</td></tr><tr><td style="text-align: center;"><img src="legend/NYSenate_3_NoSenatePrimary1.png" /></td><td>No Senate Primary</td></tr></table>': layer_NYSenate_3,'Congress<br /><table><tr><td style="text-align: center;"><img src="legend/Congress_2_PrimaryonJune23rd0.png" /></td><td>Primary on June 23rd</td></tr><tr><td style="text-align: center;"><img src="legend/Congress_2_NoCongressionalPrimary1.png" /></td><td>No Congressional Primary</td></tr></table>': layer_Congress_2,'NY Assembly<br /><table><tr><td style="text-align: center;"><img src="legend/NYAssembly_1_PrimaryonJune23rd0.png" /></td><td>Primary on June 23rd</td></tr><tr><td style="text-align: center;"><img src="legend/NYAssembly_1_NoAssemblyPrimary1.png" /></td><td>No Assembly Primary</td></tr></table>': layer_NYAssembly_1,"Positron": layer_Positron_0,},{collapsed:false}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/USCongressPrimary_3.png" /> US Congress Primary': layer_USCongressPrimary_3,'<img src="legend/NYSenatePrimary_2.png" /> NY Senate Primary': layer_NYSenatePrimary_2,'<img src="legend/NYAssemblyPrimary_1.png" /> NY Assembly Primary': layer_NYAssemblyPrimary_1,"Basemap": layer_Basemap_0,},{collapsed:false}).addTo(map);
         setBounds();
-        resetLabels([layer_NYSenate_3]);
-        map.on("zoomend", function(){
-            resetLabels([layer_NYSenate_3]);
-        });
-        map.on("layeradd", function(){
-            resetLabels([layer_NYSenate_3]);
-        });
-        map.on("layerremove", function(){
-            resetLabels([layer_NYSenate_3]);
-        });
         </script>
     </body>
 </html>
